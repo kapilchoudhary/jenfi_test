@@ -1,2 +1,17 @@
 <h1>The Mail Service!</h1>
+<div class = "abc"> Welcome <%= current_user.email %>....! </div><br> 
+<div class = "logout"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div>
+  <% if current_user.role == "parcel_owner"%>
+    <%= button_to "Submit A Parcel", new_parcel_path, method: :get %>
+    <%= button_to "Your Parcels", parcels_path, method: :get %>
+  <% end %>
+  <% if current_user.role == "train_operator"%>
+    <%= button_to "Your Trains", trains_path, method: :get %>
+    <%= button_to "Create a Train", new_train_path, method: :get %>
+  <% end %>
+  <% if current_user.role == "post_master"%>
+    <%= button_to "Show Parcels", parcels_path, method: :get %>
+    <%= button_to "Show Trains", trains_path, method: :get %>
+    <%= button_to "Show Lines", lines_path, method: :get %>
+  <% end %>
 

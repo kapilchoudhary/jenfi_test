@@ -10,7 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_131200) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_123854) do
+  create_table "lines", force: :cascade do |t|
+    t.string "name"
+    t.integer "status", default: 0
+    t.integer "train_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["train_id"], name: "index_lines_on_train_id"
+  end
+
+  create_table "parcels", force: :cascade do |t|
+    t.decimal "weight"
+    t.decimal "volume"
+    t.integer "status", default: 0
+    t.integer "user_id"
+    t.integer "train_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["train_id"], name: "index_parcels_on_train_id"
+    t.index ["user_id"], name: "index_parcels_on_user_id"
+  end
+
+  create_table "train_lines", force: :cascade do |t|
+    t.integer "line_id"
+    t.integer "train_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_train_lines_on_line_id"
+    t.index ["train_id"], name: "index_train_lines_on_train_id"
+  end
+
+  create_table "trains", force: :cascade do |t|
+    t.string "name"
+    t.decimal "cost"
+    t.decimal "total_weight"
+    t.decimal "total_volume"
+    t.integer "status", default: 0
+    t.integer "assigned_line"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "remaining_weight_capacity"
+    t.decimal "remaining_volume_capacity"
+    t.datetime "left_at"
+    t.index ["user_id"], name: "index_trains_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,4 +70,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_131200) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lines", "trains"
+  add_foreign_key "parcels", "trains"
+  add_foreign_key "parcels", "users"
+  add_foreign_key "train_lines", "lines"
+  add_foreign_key "train_lines", "trains"
+  add_foreign_key "trains", "users"
 end

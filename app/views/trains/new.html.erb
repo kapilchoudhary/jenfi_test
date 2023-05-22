@@ -1,0 +1,34 @@
+<h1>Train Informations!</h1>
+
+<%= form_for @train do |form| %>
+
+  <% if @train.errors.any? %>
+    <% @train.errors.full_messages.each do |message| %>
+      <p class = "abc"><%= message %></p>
+    <% end %>
+  <% end %>
+  <div class = "abc">
+    <%= form.label "Train Name" %><br>
+    <%= form.text_field :name %>  
+  </div>
+  <div class = "abc">
+    <%= form.label :Weight %><br>
+    <%= form.text_field :total_weight %>kg<p></p>  
+  </div>
+  <div class = "abc">
+    <%= form.label :Volume %><br>
+    <%= form.text_field :total_volume %>meter cube<p></p>  
+  </div>
+  <div class = "abc">
+    <%= form.label :Cost %><br>
+    <%= form.text_field :cost %>rs<p></p>  
+    </div> 
+  </div>
+  <div class="field">
+  <%= form.label :line_ids, "Lines they can run on" %>
+  <%= form.collection_check_boxes :line_ids, Line.all, :id, :name %>
+</div>
+  <div class = "abc">
+    <%= form.submit 'Create train' %><br>
+  </div>
+<% end %>

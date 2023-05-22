@@ -1,0 +1,22 @@
+<h1>Tell us about your parcel!</h1>
+
+<%= form_for @parcel do |form| %>
+
+  <% if @parcel.errors.any? %>
+    <% @parcel.errors.full_messages.each do |message| %>
+      <p class = "abc"><%= message %></p>
+    <% end %>
+  <% end %>
+
+  <div class = "abc">
+    <%= form.label :Weight %><br>
+    <%= form.text_field :weight %>  
+  </div>
+  <div class = "abc">
+    <%= form.label :Volume %><br>
+    <%= form.text_field :volume %>  
+  </div>
+  <div class = "abc">
+    <%= form.submit 'Submit Parcel' %><br>
+  </div>
+<% end %>

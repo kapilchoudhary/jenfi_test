@@ -1,0 +1,17 @@
+<h1>Line Informations!</h1>
+
+<%= form_for @line do |form| %>
+
+  <% if @line.errors.any? %>
+    <% @line.errors.full_messages.each do |message| %>
+      <p class = "abc"><%= message %></p>
+    <% end %>
+  <% end %>
+  <div class = "abc">
+    <%= form.label "line Name" %><br>
+    <%= form.text_field :name %>  
+  </div>
+  <div class = "abc">
+    <%= form.submit 'Create line' %><br>
+  </div>
+<% end %>

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Line.create(name: "Line_1")
+Line.create(name: "Line_2")
+Line.create(name: "Line_3")
+Line.create(name: "Line_4")

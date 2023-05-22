@@ -1,0 +1,24 @@
+<p><%= notice %></p>
+<h1>Line Informations</h1>
+<table border= '1', class= "tab">
+  <thead>
+    <tr>
+      <th>Id</th><br>
+      <th>Name</th><br>
+      <th>Status</th><br>
+      <th>Train Name</th><br>
+    </tr>
+  </thead> 
+  <tbody>
+  <%# if current_user.role == "post_master"%>
+    <% @lines.each do|line| %>
+      <tr>
+        <td class = "abc"><%= line.id %></td>
+        <td class = "abc"><%= line.name %></td>
+        <td class = "abc"><%= line.status %></td>
+        <td class = "abc"><%= line.trains %></td>
+    </tr>
+    <% end %>
+  </tbody>  
+  <%# end %> 
+</table>

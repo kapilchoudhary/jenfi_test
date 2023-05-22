@@ -1,0 +1,19 @@
+example_id                              | status | run_time        |
+--------------------------------------- | ------ | --------------- |
+./spec/models/line_spec.rb[1:1:1]       | passed | 0.00256 seconds |
+./spec/models/line_spec.rb[1:1:2]       | passed | 0.00054 seconds |
+./spec/models/line_spec.rb[1:2:1]       | passed | 0.00095 seconds |
+./spec/models/parcel_spec.rb[1:1:1]     | passed | 0.00645 seconds |
+./spec/models/parcel_spec.rb[1:2:1:1]   | passed | 0.01084 seconds |
+./spec/models/train_line_spec.rb[1:1:1] | passed | 0.21622 seconds |
+./spec/models/train_line_spec.rb[1:1:2] | passed | 0.0012 seconds  |
+./spec/models/train_spec.rb[1:1:1]      | passed | 0.00111 seconds |
+./spec/models/train_spec.rb[1:1:2]      | passed | 0.0005 seconds  |
+./spec/models/train_spec.rb[1:1:3]      | passed | 0.00855 seconds |
+./spec/models/train_spec.rb[1:3:1]      | passed | 0.00164 seconds |
+./spec/models/user_spec.rb[1:1:1]       | passed | 0.00307 seconds |
+./spec/models/user_spec.rb[1:1:2]       | passed | 0.00302 seconds |
+./spec/models/user_spec.rb[1:2:1]       | passed | 0.00372 seconds |
+./spec/models/user_spec.rb[1:3]         | passed | 0.00516 seconds |
+./spec/models/user_spec.rb[1:4]         | passed | 0.00523 seconds |
+./spec/models/user_spec.rb[1:5]         | passed | 0.00831 seconds |

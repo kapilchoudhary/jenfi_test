@@ -1,0 +1,56 @@
+<p><%= notice %></p>
+<h1>Train Informations</h2>
+<table border= '1', class= "tab">
+  <thead>
+    <tr>
+      <th>Train Name</th><br>
+      <th>Cost</th><br>
+      <th>Total Weight</th><br>
+      <th>Total Volume</th><br>
+      <th>Status</th><br>
+      <th>Remaining Weight Capacity</th><br>
+      <th>Remaining Volume Capacity</th><br>
+      <th>Assigned Line</th><br>
+    </tr>
+  </thead> 
+  <% if current_user.role == "post_master"%>
+    <% @trains.each do|train| %>
+      <tbody>
+        <tr>
+          <td class = "abc"><%= train.name %></td>
+          <td class = "abc"><%= train.cost %></td>
+          <td class = "abc"><%= train.total_weight %></td>
+          <td class = "abc"><%= train.total_volume %></td>
+          <td class = "abc"><%= train.status %></td>
+          <td class = "abc"><%= train.remaining_weight_capacity %></td>
+          <td class = "abc"><%= train.remaining_volume_capacity %></td>
+          <td class = "abc"><%= link_to 'Fill Train', train_path(train) %></td>
+          <td class = "abc"><%#= train.line %></td>
+          <td class = "abc"><%#= link_to 'View', train %></td>
+          <td class = "abc"><%#= link_to 'Edit', edit_train_path(train) %></td>
+          <td class = "abc"><%#= link_to 'Delete', train_path(train), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
+        </tr>
+      </tbody>
+    <% end %>  
+  <% else %>
+  <%= link_to('Create New Train', new_train_path)%>
+  <% @trains.each do|train| %>
+    <tbody>
+      <tr>
+        <td class = "abc"><%= train.name %></td>
+        <td class = "abc"><%= train.cost %></td>
+        <td class = "abc"><%= train.total_weight %></td>
+        <td class = "abc"><%= train.total_volume %></td>
+        <td class = "abc"><%= train.status %></td>
+        <td class = "abc"><%= train.remaining_weight_capacity %></td>
+        <td class = "abc"><%= train.remaining_volume_capacity %></td>
+        <td class = "abc"><%= train.assigned_line %></td>
+        <td class = "abc"><%#= train.line %></td>
+        <td class = "abc"><%#= link_to 'View', train %></td>
+        <td class = "abc"><%#= link_to 'Edit', edit_train_path(train) %></td>
+        <td class = "abc"><%#= link_to 'Delete', train_path(train), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
+      </tr>
+    </tbody>
+  <% end %> 
+  <% end %>   
+</table>

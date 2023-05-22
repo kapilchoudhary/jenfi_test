@@ -1,0 +1,43 @@
+<div class = "tab">
+<p class = "abc"><%= notice %></p>
+<div class = "abc" ><%= link_to 'Back', trains_path%> </div>
+
+<h1 class = "abc"> Train Details :-</h1>
+<p class = "abc" ><strong>Train Name:</strong><%= @train.name %></p>
+<p class = "abc" ><strong>Total Cost:</strong><%= @train.cost %></p>
+<p class = "abc" ><strong>Total Weight:</strong><%= @train.total_weight %></p>
+<p class = "abc" ><strong>Total Volume:</strong><%= @train.total_volume %></p>
+<p class = "abc" ><strong>Status:</strong><%= @train.status %></p>
+<p class = "abc" ><strong>Remaining Weight Capacity:</strong><%= @train.remaining_weight_capacity %></p>
+<p class = "abc" ><strong>Remaining Volume Capacity:</strong><%= @train.remaining_volume_capacity %></p><br>
+
+<h1>Parcels To Be Booked</h1>
+<table border= '1', class= "tab">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Weight</th>
+      <th>Volume</th>
+      <th>Status</th>
+      <th>Book Train</th>
+    </tr>
+  </thead> 
+  <tbody>
+    <% @parcels.each do|parcel| %>
+      <tr>
+        <td class = "abc"><%= parcel.id %></td>
+        <td class = "abc"><%= parcel.weight %></td>
+        <td class = "abc"><%= parcel.volume %></td>
+        <td class = "abc"><%= parcel.status %></td>
+        <td class = "abc"><%= button_to 'Add to train', add_parcels_train_path(@train, parcel), :method=> :get %></td> 
+      </tr>
+    <% end %>
+  </tbody>
+
+<div class = "abc">
+<%= form_for @train do |form| %>
+  <%= form.label :"Select Line" %><br>
+  <%= form.select(:train_lines, @train.train_lines.collect {|u| [u.line&.name, u.line_id] if u.line.available?}, :prompt => 'Select') %>
+  <%= form.submit 'Left the Train' %><br>
+<% end %>
+</div>

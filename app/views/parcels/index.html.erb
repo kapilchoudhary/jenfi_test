@@ -1,0 +1,28 @@
+<p><%= notice %></p>
+<h1>Parcel Informations</h1>
+<table border= '1', class= "tab">
+  <thead>
+    <tr>
+      <th>Id</th><br>
+      <th>Weight</th><br>
+      <th>Volume</th><br>
+      <th>Status</th><br>
+    </tr>
+  </thead> 
+  <tbody>
+    <% @parcels.each do|parcel| %>
+      <tr>
+        <td class = "abc"><%= parcel.id %></td>
+        <td class = "abc"><%= parcel.weight %></td>
+        <td class = "abc"><%= parcel.volume %></td>
+        <td class = "abc"><%= parcel.status %></td>
+        <% if parcel.shipped? %>
+        <td class = "abc"><%= link_to 'Withdraw', withdraw_parcels_path(parcel), :method=> :put %></td> 
+        <% end %>
+        </tr>
+    <% end %>
+  </tbody>   
+  <% if current_user.role == "parcel_owner"%>
+  <%= link_to('Submit new Parcel', new_parcel_path)%>
+  <% end %>
+</table>
